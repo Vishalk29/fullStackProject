@@ -12,13 +12,14 @@
         transform: translateY(-10px);
     }
 }
-/* .banner {
+.banner {
     padding: 2rem;
-} */
+}
 .banner > svg {
     color: white;
     font-size: 3rem;
     transition: color 0.5s;
+    text-align: center;
 }
 .banner > svg :hover {
     color: rgba(255, 255, 0, 0.862);

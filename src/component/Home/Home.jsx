@@ -55,7 +55,6 @@ const Home = () => {
           textAlign={'center'}
           color={'yellow.400'}
           fontFamily="body"
-          padding={'auto'}
         />
         <HStack className="banner" justifyContent={'space-evenly'}>
           <CgGoogle />
@@ -70,7 +69,7 @@ const Home = () => {
           autoPlay
           controls
           controlsList="nodownload nofullscreen noremoteplayback"
-          disablepictureInPicture
+          disablePictureInPicture
           disableRemotePlayback
           src={introvideo}
         ></video>
