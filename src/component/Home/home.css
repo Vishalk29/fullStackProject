@@ -1,0 +1,48 @@
+.container {
+    height: "100vh";
+    padding: 19rem 5rem 5rem 5rem;
+    box-sizing: border-box;
+}
+.homImgGraphics {
+    filter: drop-shadow(0 40px 30px rgba(0, 0, 0, 0.3));
+    animation: homImgGraphicsAnimation 1s infinite ease-in-out alternate;
+}
+@keyframes homImgGraphicsAnimation {
+    to {
+        transform: translateY(-10px);
+    }
+}
+/* .banner {
+    padding: 2rem;
+} */
+.banner > svg {
+    color: white;
+    font-size: 3rem;
+    transition: color 0.5s;
+}
+.banner > svg :hover {
+    color: rgba(255, 255, 0, 0.862);
+}
+.container2 {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container2 video {
+    width: 60%;
+    /* border: 1px solid rgba(0, 0, 0, 0.3); */
+    box-shadow: 0 0 10 rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    outline: none;
+}
+@media screen and (max-width: 600px) {
+    .container2 {
+        height: unset;
+        padding: 4vh 0;
+    }
+    .container2 video {
+        width: 100%;
+    }
+}
