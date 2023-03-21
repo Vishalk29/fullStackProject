@@ -7,9 +7,11 @@ import {
   Input,
   Stack,
   Text,
+  Link,
   VStack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 const Course = ({
   view,
@@ -39,8 +41,35 @@ const Course = ({
           fontWeight={'bold'}
           textTransform={'uppercase'}
         />
-        <Text children={creator} fontFamily={'body'} />
+        <Text
+          children={creator}
+          fontFamily={'body'}
+          textTransform={'uppercase'}
+        />
       </HStack>
+      <Heading
+        textAlign={'center'}
+        size="xs"
+        children={`leactures - ${lectureCount}`}
+        textTransform={'uppercase'}
+      />
+      <Heading
+        size="xs"
+        children={`Views - ${view}`}
+        textTransform={'uppercase'}
+      />
+      <Stack direction={['column', 'row']} alignItems={'center'}>
+        <Link as={ReactRouterLink} to={`/courses/${id}`}>
+          <Button colorScheme={'yellow'}>Watch Now </Button>
+        </Link>
+        <Button
+          onClick={() => addToPlaylistHandler(id)}
+          variant={'ghost'}
+          colorScheme={'yellow'}
+        >
+          Add to Playlist{' '}
+        </Button>
+      </Stack>
     </VStack>
   );
 };
@@ -49,6 +78,9 @@ export const Courses = () => {
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState('');
 
+  const addToPlaylistHandler = () => {
+    console.log('Added to playlist');
+  };
   const categories = [
     'web-Development',
     'Artifical intelligence',
@@ -76,9 +108,9 @@ export const Courses = () => {
         focusBorderColor="yellow.500"
       />
       <HStack overflowX={'auto'} paddingY="8">
-        {categories.map(item => (
+        {categories.map((item, index) => (
           <Button onClick={() => setCategory(item)} minW={'60'}>
-            <Text children={item} />
+            <Text key={index} children={item} />
           </Button>
         ))}
       </HStack>
@@ -93,10 +125,10 @@ export const Courses = () => {
           title={'sample'}
           imgSrc={'sample'}
           id={'sample'}
-          // addToPlaylistHandler: any;
           creator={'sample'}
           description={'sample'}
           lectureCount={2}
+          addToPlaylistHandler={addToPlaylistHandler}
         />
       </Stack>
     </Container>
