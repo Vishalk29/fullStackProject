@@ -16,8 +16,8 @@ import { ColorModeSwitcher } from '../../../ColorModeSwitcher.js';
 import { RiDashboardFill, RiLogoutBoxFill, RiMenu5Fill } from 'react-icons/ri';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
-const LinkButton = ({ url = '/', title = 'Home' }) => (
-  <Link as={ReactRouterLink} to={url}>
+const LinkButton = ({ url = '/', title = 'Home', onClose }) => (
+  <Link onClick={onClose} as={ReactRouterLink} to={url}>
     <Button variant={'ghost'}>{title}</Button>
   </Link>
 );
@@ -29,6 +29,7 @@ const Header = () => {
   };
   const logoutHandler = () => {
     console.log('logout');
+    onClose();
   };
   return (
     <>
@@ -53,11 +54,19 @@ const Header = () => {
           <DrawerHeader borderBottomWidth={'1px'}>COURSE BUNDLER</DrawerHeader>
           <DrawerBody>
             <VStack>
-              <LinkButton url="/" title="Home" />
-              <LinkButton url="/Courses" title="Browse All Courses " />
-              <LinkButton url="/request" title="Request For Course" />
-              <LinkButton url="/contact" title="Contact Us" />
-              <LinkButton url="/about" title="About Us" />
+              <LinkButton onClose={onClose} url="/" title="Home" />
+              <LinkButton
+                onClose={onClose}
+                url="/courses"
+                title="Browse All Courses "
+              />
+              <LinkButton
+                onClose={onClose}
+                url="/request"
+                title="Request For Course"
+              />
+              <LinkButton onClose={onClose} url="/contact" title="Contact Us" />
+              <LinkButton onClose={onClose} url="/about" title="About Us" />
 
               <HStack
                 justifyContent={'space-evenly'}
@@ -69,7 +78,11 @@ const Header = () => {
                   <>
                     <VStack>
                       <HStack>
-                        <Link as={ReactRouterLink} to="/profile">
+                        <Link
+                          onClick={onClose}
+                          as={ReactRouterLink}
+                          to="/profile"
+                        >
                           <Button variant={'ghost'} colorScheme={'yellow'}>
                             Profile
                           </Button>
@@ -80,7 +93,11 @@ const Header = () => {
                         </Button>
                       </HStack>
                       {user && user.role === 'admin' ? (
-                        <Link as={ReactRouterLink} to="/admin/dashboard">
+                        <Link
+                          onClick={onClose}
+                          as={ReactRouterLink}
+                          to="/admin/dashboard"
+                        >
                           <Button
                             colorScheme={'purple'}
                             variant="ghost"
@@ -97,12 +114,12 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Link as={ReactRouterLink} to="/login">
+                    <Link onClick={onClose} as={ReactRouterLink} to="/login">
                       <Button colorScheme={'yellow'}>Login</Button>
                     </Link>
                     <p>OR</p>
 
-                    <Link as={ReactRouterLink} to="/register">
+                    <Link onClick={onClose} as={ReactRouterLink} to="/register">
                       <Button colorScheme={'yellow'}>Sign Up</Button>
                     </Link>
                   </>
