@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Container,
@@ -11,18 +12,36 @@ import {
 import React, { useState } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [imagePrev, setImagePrev] = useState('');
 
   return (
     <Container h={'95vh'}>
       <VStack h={'full'} justifyContent="center" spacing={'16'}>
         <Heading
+          textTransform={'uppercase'}
           fontFamily={'sans-serif'}
-          children={' Welcome to CourseBundler '}
+          children={' Registration '}
         />
         <form style={{ width: '100%' }}>
+          <Box my={'4'} display={'flex'} justifyContent={'center'}>
+            <Avatar src={imagePrev} size={'2xl'} />
+          </Box>
+          <Box my={'4'}>
+            <FormLabel htmlFor="name" children={'Name'} />
+            <Input
+              required
+              type={'text'}
+              id="name"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="abc"
+              focusBorderColor="yellow.500"
+            />
+          </Box>
           <Box my={'4'}>
             <FormLabel htmlFor="email" children={'Email address'} />
             <Input
@@ -47,23 +66,26 @@ const Login = () => {
               focusBorderColor="yellow.500"
             />
           </Box>
-          <Box>
-            <Link as={ReactRouterLink} to="/forgotpassword">
-              <Button variant={'link'} fontSize={'sm'}>
-                forgot password
-              </Button>
-            </Link>
+          <Box my={'4'}>
+            <FormLabel htmlFor="chooseAvatar" children={'Choose Avatar'} />
+            <Input
+              accept="/image/*"
+              required
+              id="chooseAvatar"
+              type={'file'}
+              focusBorderColor="yellow.500"
+            />
           </Box>
+
           <Button my={'4'} fontSize={'sm'} type="submit" colorScheme={'yellow'}>
-            Login
+            Sign Up
           </Button>
           <Box my={'4'}>
-            New user?{' '}
-            <Link as={ReactRouterLink} to="/register">
+            Already Signed Up?{' '}
+            <Link as={ReactRouterLink} to="/login">
               <Button colorScheme={'yellow'} variant="link">
-                Sign up
+                Login
               </Button>{' '}
-              Here
             </Link>
           </Box>
         </form>
@@ -72,4 +94,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
