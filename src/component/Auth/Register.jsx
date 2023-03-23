@@ -12,11 +12,39 @@ import {
 import React, { useState } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
+// file uplod style
+export const fileUplodeCss = {
+  '&:: file-selector-button': {
+    cursor: 'pointer',
+    marginleft: '-5%',
+    width: '105%',
+    border: 'none',
+    height: '100%',
+    color: '#ECC94B',
+    backgroundColor: 'white',
+  },
+};
+
+const fileUplodStyle = fileUplodeCss;
+
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [imagePrev, setImagePrev] = useState('');
+  const [image, setImage] = useState('');
+
+  // This logic for selecting file and pasting to avatar
+  const changeImageHandler = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setImagePrev(reader.result);
+      setImage(file);
+    };
+  };
 
   return (
     <Container h={'95vh'}>
@@ -74,6 +102,8 @@ const Register = () => {
               id="chooseAvatar"
               type={'file'}
               focusBorderColor="yellow.500"
+              css={fileUplodStyle}
+              onChange={changeImageHandler}
             />
           </Box>
 
