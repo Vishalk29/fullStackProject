@@ -2,11 +2,14 @@ import {
   Avatar,
   Container,
   Text,
+  Link,
   Heading,
   Stack,
   VStack,
+  Button,
 } from '@chakra-ui/react';
 import React from 'react';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 const Founder = () => (
   <Stack direction={['column', 'row']} spacing={['6', '16']} padding={'8'}>
@@ -32,6 +35,17 @@ const About = () => {
     <Container maxW={'container.lg'} p={'16'} boxShadow={'lg'}>
       <Heading children="About us" textAlign={['center', 'left']} />
       <Founder />
+      <Stack m="8" direction={['column', 'row']} alignItems="center">
+        <Text fontFamily={'sans-serif'} m="8" textAlign={['center', 'left']}>
+          We are a video streaming platform with some premium course availble
+          only for premium users.
+        </Text>
+        <Link as={ReactRouterLink} to="/subscribe">
+          <Button variant={'ghost'} colorScheme="yellow">
+            Checkout Plans
+          </Button>
+        </Link>
+      </Stack>
     </Container>
   );
 };
