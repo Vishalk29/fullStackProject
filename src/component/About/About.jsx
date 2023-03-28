@@ -7,11 +7,14 @@ import {
   Stack,
   VStack,
   Button,
+  HStack,
+  Box,
 } from '@chakra-ui/react';
 import React from 'react';
+import { RiSecurePaymentFill } from 'react-icons/ri';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import introvideo from '../../assets/videos/intro.mp4';
-
+import termsAndCondition from '../../assets/doc/termsAndCondition';
 const Founder = () => (
   <Stack direction={['column', 'row']} spacing={['6', '16']} padding={'8'}>
     <VStack>
@@ -34,6 +37,7 @@ const Founder = () => (
 const VideoPlayer = () => (
   <video
     autoPlay
+    loop
     muted
     controls
     controlsList="nodownload nofullscreen noremoteplayback"
@@ -42,6 +46,32 @@ const VideoPlayer = () => (
     src={introvideo}
   ></video>
 );
+const TandC = ({ termsAndCondition }) => (
+  <Box>
+    <Heading
+      fontFamily={'mono'}
+      size={'md'}
+      textAlign={['center', 'left']}
+      children={'Terms and condition'}
+      my="4"
+    />
+    <Box h={'sm'} p="4" overflow={'scroll'}>
+      <Text
+        fontFamily={'heading'}
+        letterSpacing={'widest'}
+        textAlign={['center', 'left']}
+      >
+        {termsAndCondition}
+      </Text>
+      <Heading
+        size={'xs'}
+        children="Refund only applicable for cancellation within 7 days"
+        my={'4'}
+      />
+    </Box>
+  </Box>
+);
+
 const About = () => {
   return (
     <Container maxW={'container.lg'} p={'16'} boxShadow={'lg'}>
@@ -59,6 +89,17 @@ const About = () => {
         </Link>
       </Stack>
       <VideoPlayer />
+
+      <TandC termsAndCondition={termsAndCondition} />
+      <HStack my={'4'} p="4">
+        <RiSecurePaymentFill />
+        <Heading
+          children={'Payment is secured by Razorpay'}
+          size={'xs'}
+          fontFamily="sans-serif"
+          textTransform={'uppercase'}
+        />
+      </HStack>
     </Container>
   );
 };

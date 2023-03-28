@@ -66,6 +66,8 @@ const Home = () => {
       </Box>
       <div className="container2">
         <video
+          muted
+          loop
           autoPlay
           controls
           controlsList="nodownload nofullscreen noremoteplayback"
