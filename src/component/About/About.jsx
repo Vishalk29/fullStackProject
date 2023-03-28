@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
+import introvideo from '../../assets/videos/intro.mp4';
 
 const Founder = () => (
   <Stack direction={['column', 'row']} spacing={['6', '16']} padding={'8'}>
@@ -30,6 +31,17 @@ const Founder = () => (
     </VStack>
   </Stack>
 );
+const VideoPlayer = () => (
+  <video
+    autoPlay
+    muted
+    controls
+    controlsList="nodownload nofullscreen noremoteplayback"
+    disablePictureInPicture
+    disableRemotePlayback
+    src={introvideo}
+  ></video>
+);
 const About = () => {
   return (
     <Container maxW={'container.lg'} p={'16'} boxShadow={'lg'}>
@@ -46,6 +58,7 @@ const About = () => {
           </Button>
         </Link>
       </Stack>
+      <VideoPlayer />
     </Container>
   );
 };
