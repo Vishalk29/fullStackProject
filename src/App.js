@@ -32,6 +32,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/paymentsuccess" element={<PaymentSucces />} />
         <Route path="/paymentfail" element={<PaymentFail />} />
+        <Route path="/pagenotfound" element={<NotFound />} />
 
         <Route path="/forgotpassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />

@@ -45,7 +45,7 @@ const Subscribe = () => {
           <Text
             fontSize={'xs'}
             color={'white'}
-            children={'Terms & condtion apply'}
+            children={' Terms & condtion apply'}
           />
         </Box>
       </VStack>
