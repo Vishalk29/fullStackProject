@@ -5,6 +5,7 @@ import {
   Container,
   HStack,
   Heading,
+  Image,
   Link,
   Stack,
   Text,
@@ -21,6 +22,12 @@ const Profile = () => {
     subscription: {
       status: 'active',
     },
+    playlist: [
+      {
+        course: 'sdsdf',
+        poster: 'gshsh',
+      },
+    ],
   };
   return (
     <Container minH={'95vh'} maxW={'container.lg'} py="8">
@@ -66,8 +73,47 @@ const Profile = () => {
               )}
             </HStack>
           )}
+
+          <Stack direction={['column', 'row']} alignItems={'center'}>
+            <Link as={ReactRouterLink} to="/updateprofile">
+              <Button>Update Profile</Button>
+            </Link>
+
+            <Link as={ReactRouterLink} to="/changepassword">
+              <Button>Change Password</Button>
+            </Link>
+          </Stack>
         </VStack>
       </Stack>
+
+      <Heading children="Playlist" size={'md'} my={'8'} />
+
+      {user.playlist.length > 0 && (
+        <Stack
+          direction={['column', 'row']}
+          alignItems={'center'}
+          flexWrap={'wrap'}
+          p={'4'}
+        >
+          {user.playlist.map((element, index) => (
+            <VStack w={'48'} m={'3'} key={element.course}>
+              <Image
+                boxSize={'full'}
+                objectFit={'contain'}
+                src={element.poster}
+              />
+
+              <HStack>
+                <Link as={ReactRouterLink} to={`/course/${element.course}`}>
+                  <Button colorScheme="yellow" variant={'ghost'}>
+                    Watch Now
+                  </Button>
+                </Link>
+              </HStack>
+            </VStack>
+          ))}
+        </Stack>
+      )}
     </Container>
   );
 };
