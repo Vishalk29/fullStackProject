@@ -59,7 +59,7 @@ const Course = ({
         textTransform={'uppercase'}
       />
       <Stack direction={['column', 'row']} alignItems={'center'}>
-        <Link as={ReactRouterLink} to={`/courses/${id}`}>
+        <Link as={ReactRouterLink} to={`/course/${id}`}>
           <Button colorScheme={'yellow'}>Watch Now </Button>
         </Link>
         <Button
