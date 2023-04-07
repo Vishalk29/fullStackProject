@@ -19,9 +19,9 @@ import Profile from './component/Profile/Profile';
 import Request from './component/Request/Request';
 
 function App() {
-  window.addEventListener('contextmenu', e => {
-    e.preventDefault();
-  });
+  // window.addEventListener('contextmenu', e => {
+  //   e.preventDefault();
+  // });
 
   return (
     <>

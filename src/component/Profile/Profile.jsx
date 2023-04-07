@@ -12,7 +12,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
-
+import { RiDeleteBin7Fill } from 'react-icons/ri';
 const Profile = () => {
   const user = {
     name: 'Vishal',
@@ -28,6 +28,10 @@ const Profile = () => {
         poster: 'gshsh',
       },
     ],
+  };
+
+  const removePlaylistHandler = id => {
+    console.log(id);
   };
   return (
     <Container minH={'95vh'} maxW={'container.lg'} py="8">
@@ -95,7 +99,7 @@ const Profile = () => {
           flexWrap={'wrap'}
           p={'4'}
         >
-          {user.playlist.map((element, index) => (
+          {user.playlist.map(element => (
             <VStack w={'48'} m={'3'} key={element.course}>
               <Image
                 boxSize={'full'}
@@ -109,6 +113,9 @@ const Profile = () => {
                     Watch Now
                   </Button>
                 </Link>
+                <Button onClick={() => removePlaylistHandler(element.course)}>
+                  <RiDeleteBin7Fill />
+                </Button>
               </HStack>
             </VStack>
           ))}
