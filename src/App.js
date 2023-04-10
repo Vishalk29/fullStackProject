@@ -19,6 +19,7 @@ import Profile from './component/Profile/Profile';
 import Request from './component/Request/Request';
 import ChangePassword from './component/Profile/ChangePassword';
 import UpdateProfile from './component/Profile/UpdateProfile';
+import Dashboard from './component/Admin/Dashboard/Dashboard';
 
 function App() {
   // window.addEventListener('contextmenu', e => {
@@ -50,6 +51,9 @@ function App() {
 
         <Route path="/forgotpassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
+
+        {/*Admin Routes */}
+        <Route path="/admin/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </>
