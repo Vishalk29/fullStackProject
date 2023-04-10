@@ -1,7 +1,31 @@
-import { Box, Grid, Heading, Text } from '@chakra-ui/react';
+import { Box, Grid, HStack, Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
+import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri';
+
+const Databox = ({ title, qty, qtyPercentage, profit }) => (
+  <Box
+    w={['full', '20%']}
+    p={'8'}
+    boxShadow={'-2px 0 10px rgba(107,70,193,0.5)'}
+    borderRadius={'lg'}
+  >
+    <Text children={title} />
+    <HStack spacing={'6'}>
+      <Text fontSize={'2xl'} fontWeight={'bold'} children={qty} />
+      <HStack>
+        <Text children={`${qtyPercentage}%`} />
+        {profit ? (
+          <RiArrowUpLine color="green" />
+        ) : (
+          <RiArrowDownLine color="red" />
+        )}
+      </HStack>
+    </HStack>
+  </Box>
+);
+
 const Dashboard = () => {
   return (
     <Grid
@@ -23,6 +47,21 @@ const Dashboard = () => {
           mb="16"
           textAlign={['center', 'left']}
         />
+
+        <Stack
+          direction={['column', 'row']}
+          minH={'24'}
+          justifyContent={'space-evenly'}
+        >
+          <Databox title="View" qty={123} qtyPercentage={30} profit={true} />
+          <Databox title="Users" qty={23} qtyPercentage={78} profit={true} />
+          <Databox
+            title="Subscription"
+            qty={12}
+            qtyPercentage={20}
+            profit={false}
+          />
+        </Stack>
       </Box>
       <Sidebar />
     </Grid>
