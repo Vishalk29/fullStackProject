@@ -113,6 +113,14 @@ const Dashboard = () => {
               <Bar profit={false} title="Subscription" value={20} />
             </Box>
           </Box>
+          <Box p={['0', '16']} boxSizing="border-box" py={'6'}>
+            <Heading
+              children="Users"
+              size={'md'}
+              textAlign={'center'}
+              mb={'4'}
+            />
+          </Box>
         </Grid>
       </Box>
       <Sidebar />
