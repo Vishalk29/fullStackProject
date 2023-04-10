@@ -1,4 +1,4 @@
-import { Box, Grid, Text } from '@chakra-ui/react';
+import { Box, Grid, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
@@ -16,6 +16,12 @@ const Dashboard = () => {
           children={`Last change was on ${String(new Date()).split('G')[0]}`}
           textAlign={'center'}
           opacity={0.5}
+        />
+        <Heading
+          children="Dashboard"
+          ml={['0', '16']}
+          mb="16"
+          textAlign={['center', 'left']}
         />
       </Box>
       <Sidebar />
