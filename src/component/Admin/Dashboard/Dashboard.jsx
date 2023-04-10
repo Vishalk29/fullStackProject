@@ -1,4 +1,12 @@
-import { Box, Grid, HStack, Heading, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Grid,
+  HStack,
+  Heading,
+  Progress,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
 import React from 'react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
@@ -26,6 +34,16 @@ const Databox = ({ title, qty, qtyPercentage, profit }) => (
   </Box>
 );
 
+const Bar = ({ title, value, profit }) => (
+  <Box py={'4'} px={['0', '20']}>
+    <Heading size={'sm'} children={title} mb={2} />
+    <HStack w={'full'} alignItems={'center'}>
+      <Text children={profit ? '0%' : `-${value}%`} />
+      <Progress w={'full'} value={profit ? value : 0} colorScheme="linkedin" />
+      <Text children={`${value > 100 ? value : 100}%`} />
+    </HStack>
+  </Box>
+);
 const Dashboard = () => {
   return (
     <Grid
@@ -88,6 +106,12 @@ const Dashboard = () => {
               my={'8'}
               ml={['0', '16']}
             />
+
+            <Box>
+              <Bar profit={true} title="Views" value={30} />
+              <Bar profit={true} title="User" value={78} />
+              <Bar profit={false} title="Subscription" value={20} />
+            </Box>
           </Box>
         </Grid>
       </Box>
