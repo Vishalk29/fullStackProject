@@ -20,6 +20,9 @@ import Request from './component/Request/Request';
 import ChangePassword from './component/Profile/ChangePassword';
 import UpdateProfile from './component/Profile/UpdateProfile';
 import Dashboard from './component/Admin/Dashboard/Dashboard';
+import Createcourse from './component/Admin/Createcourse/Createcourse';
+import Admincourse from './component/Admin/Admincourses/Admincourse';
+import Users from './component/Admin/Users/Users';
 
 function App() {
   // window.addEventListener('contextmenu', e => {
@@ -54,6 +57,9 @@ function App() {
 
         {/*Admin Routes */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/createcourse" element={<Createcourse />} />
+        <Route path="/admin/courses" element={<Admincourse />} />
+        <Route path="/admin/users" element={<Users />} />
       </Routes>
       <Footer />
     </>
