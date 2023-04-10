@@ -62,6 +62,34 @@ const Dashboard = () => {
             profit={false}
           />
         </Stack>
+
+        <Box
+          m={['0', '16']}
+          borderRadius={'lg'}
+          p={['0', '16']}
+          mt={['4', '16']}
+          boxShadow={'-2px 0 10px rgba(107,70,193,0.5)'}
+        >
+          <Heading
+            textAlign={['center', 'left']}
+            size={'md'}
+            children="Views Graph"
+            pt={['8', '0']}
+            ml={['0', '16']}
+          />
+        </Box>
+        {/*Line Graph Here */}
+        <Grid templateColumns={['1fr', '2fr 1fr']}>
+          <Box p={'4'}>
+            <Heading
+              textAlign={['center', 'left']}
+              size={'md'}
+              children="Progress Bar"
+              my={'8'}
+              ml={['0', '16']}
+            />
+          </Box>
+        </Grid>
       </Box>
       <Sidebar />
     </Grid>
