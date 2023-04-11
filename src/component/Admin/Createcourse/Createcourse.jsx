@@ -1,15 +1,20 @@
 import {
   Box,
+  Button,
   Container,
   Grid,
   Heading,
+  Image,
   Input,
   Select,
   VStack,
+  color,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
+import { fileUplodeCss } from '../../Auth/Register';
+
 const Createcourse = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -25,6 +30,18 @@ const Createcourse = () => {
     'Game Dvelopment',
     'Automation Testing',
   ];
+
+  // This logic for selecting file and pasting to avatar
+  const changeImageHandler = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setImagePrev(reader.result);
+      setImage(file);
+    };
+  };
   return (
     <Grid
       minH={'100vh'}
@@ -76,6 +93,26 @@ const Createcourse = () => {
                 </option>
               ))}
             </Select>
+            <Input
+              accept="/image/*"
+              required
+              type={'file'}
+              focusBorderColor="purple.300"
+              css={{
+                ...fileUplodeCss,
+                '&::file-selector-button': {
+                  color: 'purple',
+                },
+              }}
+              onChange={changeImageHandler}
+            />
+
+            {imagePrev && (
+              <Image src={imagePrev} objectFit={'contain'} boxSize={'64'} />
+            )}
+            <Button type="submit" w={'full'} colorScheme="purple">
+              Submit
+            </Button>
           </VStack>
         </form>
       </Container>
