@@ -4,6 +4,7 @@ import {
   Grid,
   HStack,
   Heading,
+  Image,
   Table,
   TableCaption,
   TableContainer,
@@ -18,19 +19,21 @@ import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { RiDeleteBin7Fill } from 'react-icons/ri';
 const Admincourse = () => {
-  const users = [
+  const courses = [
     {
       _id: 'sbuabjdbdjn',
-      name: 'Vishal',
-      role: 'admin',
-      subscription: {
-        status: 'active',
+      title: 'ReactCourse',
+      category: 'web development',
+      poster: {
+        url: 'https://www.youtube.com/',
       },
-      email: 'kulkarni.vishal002@gmail.com',
+      createdBy: ' vishal programer',
+      views: 123,
+      numOfVideos: 12,
     },
   ];
 
-  const updateHandler = userId => {
+  const courseDetailHandler = userId => {
     console.log(userId);
   };
   const deleteHandler = userId => {
@@ -44,30 +47,32 @@ const Admincourse = () => {
         cursor: `url(${cursor}) ,default`,
       }}
     >
-      <Box padding={['0', '16']} overflow={'auto'}>
+      <Box padding={['0', '8']} overflow={'auto'}>
         <Heading
           textTransform={'uppercase'}
-          children="All Users"
+          children="All Courses"
           my={'16'}
           textAlign={['center', 'left']}
         />
         <TableContainer w={['100vw', 'full']}>
           <Table variant={'simple'} size={'lg'}>
-            <TableCaption>All Available users in the database</TableCaption>
+            <TableCaption>All Available Courses in the database</TableCaption>
             <Thead>
               <Tr>
                 <Th>Id</Th>
-                <Th>Name</Th>
-                <Th>Email</Th>
-                <Th>Role</Th>
-                <Th>Subscription</Th>
+                <Th>Poster</Th>
+                <Th>Title</Th>
+                <Th>Category</Th>
+                <Th>Creator</Th>
+                <Th isNumeric>Views</Th>
+                <Th isNumeric>Lectures</Th>
                 <Th isNumeric>Action</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {users.map(item => (
+              {courses.map(item => (
                 <Row
-                  updateHandler={updateHandler}
+                  courseDetailHandler={courseDetailHandler}
                   deleteHandler={deleteHandler}
                   key={item._id}
                   item={item}
@@ -82,22 +87,25 @@ const Admincourse = () => {
   );
 };
 
-function Row({ item, updateHandler, deleteHandler }) {
+function Row({ item, courseDetailHandler, deleteHandler }) {
   return (
     <Tr>
       <Td>#{item._id}</Td>
-      <Td>{item.name}</Td>
-      <Td>{item.email}</Td>
-      <Td>{item.role}</Td>
-      <Td>{item.subscription.status === 'active' ? 'Active' : 'Not Active'}</Td>
+      <Td>{<Image src={item.poster.url} />}</Td>
+      <Td>{item.title}</Td>
+      <Td textTransform={'uppercase'}>{item.category}</Td>
+      <Td>{item.createdBy}</Td>
+      <Td isNumeric>{item.views}</Td>
+      <Td isNumeric>{item.numOfVideos}</Td>
+
       <Td isNumeric>
         <HStack justifyContent={'flex-end'}>
           <Button
-            onClick={() => updateHandler(item._id)}
+            onClick={() => courseDetailHandler(item._id)}
             variant={'outline'}
             color="purple.500"
           >
-            Change Role
+            View Lecture
           </Button>
 
           <Button onClick={() => deleteHandler(item._id)} color={'purple.600'}>
