@@ -13,11 +13,13 @@ import {
   Th,
   Thead,
   Tr,
+  useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { RiDeleteBin7Fill } from 'react-icons/ri';
+import CourseModal from './CourseModal';
 const Admincourse = () => {
   const courses = [
     {
@@ -32,13 +34,22 @@ const Admincourse = () => {
       numOfVideos: 12,
     },
   ];
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   const courseDetailHandler = userId => {
-    console.log(userId);
+    onOpen();
   };
   const deleteHandler = userId => {
     console.log(userId);
   };
+  const deleteLectureHadler = (courseId, lectureId) => {
+    console.log(courseId);
+    console.log(lectureId);
+  };
+  const addLectureHanlder = (e, courseId, title, description, video) => {
+    e.preventDefault();
+  };
+
   return (
     <Grid
       minH={'100vh'}
@@ -81,6 +92,15 @@ const Admincourse = () => {
             </Tbody>
           </Table>
         </TableContainer>
+
+        <CourseModal
+          isOpen={isOpen}
+          onClose={onClose}
+          id={'hsdbvdd'}
+          courseTitle={'ReactCourse'}
+          deleteLectureHadler={deleteLectureHadler}
+          addLectureHanlder={addLectureHanlder}
+        />
       </Box>
       <Sidebar />
     </Grid>
